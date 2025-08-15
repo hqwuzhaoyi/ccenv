@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.env
+.env.local
+.env.*.local
+coverage/
+.DS_Store
+*.tgz
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.log
+*.swp
+*.bak
+*.tmp
+*.out
+# Optional: OS-specific
+Thumbs.db
