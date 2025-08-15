@@ -1,0 +1,30 @@
+{
+  "name": "ccenv",
+  "version": "1.0.0",
+  "description": "Claude Code environment variable switcher",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "ccenv": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["claude", "environment", "cli", "anthropic"],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "chalk": "^5.5.0",
+    "commander": "^14.0.0",
+    "dotenv": "^17.2.1",
+    "inquirer": "^12.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  }
+}
