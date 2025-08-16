@@ -1,6 +1,18 @@
 # ccenv
 
-A CLI tool for switching Claude Code environment variables quickly and seamlessly.
+🚀 **Interactive CLI tool** for switching Claude Code environment variables quickly and seamlessly.
+
+✨ **New in v1.1.0**: Interactive list navigation with arrow keys for seamless environment switching!
+
+## ✨ Key Features
+
+- 🎯 **Interactive Navigation** - Use arrow keys to browse and select environments
+- ⚡ **Instant Switching** - One keystroke to change your entire Claude Code environment  
+- 🔄 **Automatic Application** - Environment variables applied immediately (with shell integration)
+- 💾 **Persistent Sessions** - New terminals remember your last environment
+- 📁 **Project-aware** - Automatically switch environments when entering project directories
+- 🔧 **Shell Integration** - Works seamlessly with zsh, bash, and other shells
+- 🎨 **Beautiful UI** - Colorful, intuitive command-line interface
 
 ## Quick Start
 
@@ -27,8 +39,18 @@ ccenv install
 source ~/.zshrc  # or source ~/.bashrc
 ```
 
-### 4. Use Environment
+### 4. Switch Environment
 
+**🎯 Interactive Mode (Recommended)**
+```bash
+ccenv list -i
+# Navigate with ↑↓ arrow keys
+# Press Enter to select environment
+# ✓ Switched to environment: work
+# 🎉 Environment variables automatically applied!
+```
+
+**⚡ Direct Switch**
 ```bash
 ccenv use work
 # ✓ Applied ccenv environment: work
@@ -43,7 +65,11 @@ ccenv use work
 # Add new environment
 ccenv add <name>
 
-# List all environments
+# 🎯 Interactive list (navigate with arrow keys)
+ccenv list -i
+ccenv list --interactive
+
+# List all environments (traditional view)
 ccenv list
 
 # Switch environment (auto-apply with shell integration)
@@ -56,13 +82,45 @@ ccenv current
 ccenv current --export
 ```
 
+### 🎯 Interactive Features
+
+**Navigate environments with ease using arrow keys:**
+
+```bash
+ccenv list -i
+```
+
+**What you get:**
+- ↑↓ **Arrow key navigation** through all environments
+- 📋 **Live preview** of Base URL and API Key (masked)
+- ⚡ **Instant switching** - just press Enter to select
+- 🔄 **Automatic application** of environment variables (with shell integration)
+- 🔙 **Easy exit** - select "← Back" to return to standard list
+
+**Demo:**
+```
+? Select an environment to switch to: (Use arrow keys)
+❯ work (current)
+  https://api.anthropic.com | sk-123...
+  
+  personal
+  https://api.personal.com | sk-456...
+  
+  mirror
+  https://api.mirror.com | sk-789...
+  
+  ← Back (just list)
+```
+
 ### Shell Integration Features
 
 After installing shell integration, you get these automated features:
 
 1. **Auto-apply Environment Variables**
    ```bash
-   ccenv use work  # Automatically sets environment variables, no manual eval needed
+   ccenv use work      # Direct command mode
+   ccenv list -i       # Interactive mode
+   # Both automatically set environment variables, no manual eval needed!
    ```
 
 2. **Persistent Environment**
@@ -114,7 +172,13 @@ ccenv add mirror
 # Install automation
 ccenv install
 
-# Switch environments (auto-apply)
+# 🎯 Interactive mode - navigate with arrow keys
+ccenv list -i
+# Select environment with Enter key
+# ✓ Switched to environment: work
+# 🎉 Environment variables automatically applied!
+
+# Or direct command mode
 ccenv use work
 echo $ANTHROPIC_BASE_URL  # https://api.work.com
 
