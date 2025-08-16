@@ -12,7 +12,12 @@
     "dev": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["claude", "environment", "cli", "anthropic"],
+  "keywords": [
+    "claude",
+    "environment",
+    "cli",
+    "anthropic"
+  ],
   "author": "",
   "license": "ISC",
   "repository": {
@@ -27,6 +32,7 @@
     "inquirer": "^12.9.2"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
     "@types/node": "^24.2.1",
     "tsx": "^4.20.4",
     "typescript": "^5.9.2"
