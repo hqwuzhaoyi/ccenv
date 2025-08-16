@@ -4,10 +4,12 @@
 
 ✨ **New in v1.1.0**: Interactive list navigation with arrow keys for seamless environment switching!
 
+![](https://wuzhaoyi.oss-cn-shanghai.aliyuncs.com/amhCleanShot%202025-08-16%20at%2023.16.57@2x.png)
+
 ## ✨ Key Features
 
 - 🎯 **Interactive Navigation** - Use arrow keys to browse and select environments
-- ⚡ **Instant Switching** - One keystroke to change your entire Claude Code environment  
+- ⚡ **Instant Switching** - One keystroke to change your entire Claude Code environment
 - 🔄 **Automatic Application** - Environment variables applied immediately (with shell integration)
 - 💾 **Persistent Sessions** - New terminals remember your last environment
 - 📁 **Project-aware** - Automatically switch environments when entering project directories
@@ -102,13 +104,13 @@ ccenv list -i
 ? Select an environment to switch to: (Use arrow keys)
 ❯ work (current)
   https://api.anthropic.com | sk-123...
-  
+
   personal
   https://api.personal.com | sk-456...
-  
+
   mirror
   https://api.mirror.com | sk-789...
-  
+
   ← Back (just list)
 ```
 
