@@ -17,6 +17,19 @@ ccenv() {
             echo "$result" >&2
             return $exit_code
         fi
+    elif [ "$1" = "list" ] && ([ "$2" = "-i" ] || [ "$2" = "--interactive" ]); then
+        # For interactive list, run command and check if environment changed
+        local before_env=$(command ccenv current --export 2>/dev/null)
+        command ccenv "$@"
+        local exit_code=$?
+        local after_env=$(command ccenv current --export 2>/dev/null)
+        
+        # If environment changed, apply the new environment variables
+        if [ $exit_code -eq 0 ] && [ "$before_env" != "$after_env" ] && [ -n "$after_env" ]; then
+            eval "$after_env"
+        fi
+        
+        return $exit_code
     else
         # For other commands, run normally
         command ccenv "$@"

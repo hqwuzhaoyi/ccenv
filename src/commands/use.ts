@@ -22,23 +22,19 @@ export async function useCommand(name: string, options: { source?: boolean } = {
     }
     
     console.log(chalk.green(`✓ Switched to environment: ${name}`));
-    console.log();
-    console.log(chalk.blue('Environment variables:'));
-    console.log(`export ANTHROPIC_BASE_URL="${environment.anthropicBaseUrl}"`);
-    console.log(`export ANTHROPIC_API_KEY="${environment.anthropicApiKey}"`);
-    console.log();
     
     // Check if shell integration is likely available
     const isShellIntegrated = process.env.CCENV_SHELL_INTEGRATION === 'true';
     
     if (isShellIntegrated) {
-      console.log(chalk.green('Environment variables will be automatically applied.'));
+      console.log(chalk.green('Environment variables automatically applied! 🎉'));
     } else {
-      console.log(chalk.yellow('To auto-apply environment variables, install shell integration:'));
-      console.log(chalk.cyan('ccenv install'));
-      console.log();
-      console.log(chalk.yellow('Or manually apply to current shell:'));
-      console.log(chalk.cyan('eval "$(ccenv current --export)"'));
+      console.log(chalk.yellow('\n⚠️  Environment variables not automatically applied'));
+      console.log(chalk.dim('Shell integration is not installed. To apply the changes:'));
+      console.log(chalk.cyan('\n  eval "$(ccenv current --export)"'));
+      console.log(chalk.dim('\nOr install shell integration with:'));
+      console.log(chalk.cyan('  ccenv install'));
+      console.log(chalk.dim('  source ~/.zshrc  # (or ~/.bashrc)'));
     }
     
   } catch (error) {
