@@ -12,6 +12,9 @@ program
   .description('Claude Code environment variable switcher')
   .version('1.0.0');
 
+// Add support for lowercase -v as well
+program.addHelpText('after', '\nVersion can also be displayed with: ccenv -V or --version');
+
 program
   .command('add')
   .description('Add a new environment configuration')
@@ -21,6 +24,7 @@ program
 program
   .command('list')
   .description('List all environment configurations')
+  .option('-i, --interactive', 'Enable interactive mode with arrow key navigation')
   .action(listCommand);
 
 program
