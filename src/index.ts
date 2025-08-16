@@ -10,7 +10,7 @@ import { initCommand } from './commands/init.js';
 program
   .name('ccenv')
   .description('Claude Code environment variable switcher')
-  .version('1.0.0');
+  .version('1.1.0');
 
 // Add support for lowercase -v as well
 program.addHelpText('after', '\nVersion can also be displayed with: ccenv -V or --version');
