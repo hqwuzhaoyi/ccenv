@@ -1,5 +1,17 @@
 # ccenv
 
+## 1.2.0
+
+### Minor Changes
+
+- Add optional ANTHROPIC_AUTH_TOKEN support
+
+  - Added optional `anthropicAuthToken` field to Environment interface
+  - Enhanced `add` command to prompt for optional auth token
+  - Updated `current` and `init` commands to export auth token when present
+  - Added masked display of auth token in environment details
+  - Maintains full backward compatibility with existing environments
+
 ## 1.1.0
 
 ### Minor Changes
