@@ -26,6 +26,9 @@ export async function currentCommand(options: { export?: boolean } = {}): Promis
     if (options.export) {
       console.log(`export ANTHROPIC_BASE_URL="${environment.anthropicBaseUrl}"`);
       console.log(`export ANTHROPIC_API_KEY="${environment.anthropicApiKey}"`);
+      if (environment.anthropicAuthToken) {
+        console.log(`export ANTHROPIC_AUTH_TOKEN="${environment.anthropicAuthToken}"`);
+      }
       return;
     }
 
@@ -33,6 +36,9 @@ export async function currentCommand(options: { export?: boolean } = {}): Promis
     console.log();
     console.log(`${chalk.dim('Base URL:')} ${environment.anthropicBaseUrl}`);
     console.log(`${chalk.dim('API Key:')} ${environment.anthropicApiKey.substring(0, 7)}...`);
+    if (environment.anthropicAuthToken) {
+      console.log(`${chalk.dim('Auth Token:')} ${environment.anthropicAuthToken.substring(0, 7)}...`);
+    }
     
   } catch (error) {
     console.error(chalk.red(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));

@@ -93,6 +93,9 @@ export async function initCommand(options: { shell?: boolean } = {}): Promise<vo
     // Output environment variables for shell to source
     console.log(`export ANTHROPIC_BASE_URL="${environment.anthropicBaseUrl}"`);
     console.log(`export ANTHROPIC_API_KEY="${environment.anthropicApiKey}"`);
+    if (environment.anthropicAuthToken) {
+      console.log(`export ANTHROPIC_AUTH_TOKEN="${environment.anthropicAuthToken}"`);
+    }
     
   } catch (error) {
     // Silent failure for init command

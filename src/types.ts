@@ -2,6 +2,7 @@ export interface Environment {
   name: string;
   anthropicBaseUrl: string;
   anthropicApiKey: string;
+  anthropicAuthToken?: string;
   isActive?: boolean;
 }
 

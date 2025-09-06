@@ -33,13 +33,24 @@ export async function addCommand(name: string): Promise<void> {
           if (!input.startsWith('sk-')) return 'API key should start with "sk-"';
           return true;
         }
+      },
+      {
+        type: 'password',
+        name: 'anthropicAuthToken',
+        message: 'ANTHROPIC_AUTH_TOKEN (optional):',
+        mask: '*',
+        validate: (input: string) => {
+          if (!input.trim()) return true; // Optional field
+          return true;
+        }
       }
     ]);
 
     const environment: Environment = {
       name,
       anthropicBaseUrl: answers.anthropicBaseUrl,
-      anthropicApiKey: answers.anthropicApiKey
+      anthropicApiKey: answers.anthropicApiKey,
+      ...(answers.anthropicAuthToken?.trim() && { anthropicAuthToken: answers.anthropicAuthToken })
     };
 
     await addEnvironment(environment);
