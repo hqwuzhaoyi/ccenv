@@ -1,10 +1,11 @@
-name: Publish package
+name: Publish package (Manual)
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (optional, uses package.json version if not specified)'
+        required: false
 
 jobs:
   publish:
