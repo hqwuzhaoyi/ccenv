@@ -26,11 +26,10 @@ export async function addCommand(name: string): Promise<void> {
       {
         type: 'password',
         name: 'anthropicApiKey',
-        message: 'ANTHROPIC_API_KEY:',
+        message: 'ANTHROPIC_API_KEY (optional):',
         mask: '*',
         validate: (input: string) => {
-          if (!input.trim()) return 'API key is required';
-          if (!input.startsWith('sk-')) return 'API key should start with "sk-"';
+          if (!input.trim()) return true; // Optional field
           return true;
         }
       },
@@ -49,7 +48,7 @@ export async function addCommand(name: string): Promise<void> {
     const environment: Environment = {
       name,
       anthropicBaseUrl: answers.anthropicBaseUrl,
-      anthropicApiKey: answers.anthropicApiKey,
+      ...(answers.anthropicApiKey?.trim() && { anthropicApiKey: answers.anthropicApiKey }),
       ...(answers.anthropicAuthToken?.trim() && { anthropicAuthToken: answers.anthropicAuthToken })
     };
 

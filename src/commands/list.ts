@@ -21,8 +21,9 @@ export async function listCommand(options: ListOptions = {}): Promise<void> {
       const choices = config.environments.map(env => {
         const isCurrent = env.name === config.currentEnvironment;
         const displayName = isCurrent ? `${env.name} (current)` : env.name;
-        const description = `${env.anthropicBaseUrl} | ${env.anthropicApiKey.substring(0, 7)}...`;
-        
+        const apiKeyPart = env.anthropicApiKey ? `${env.anthropicApiKey.substring(0, 7)}...` : env.anthropicAuthToken ? 'auth token' : 'no credentials';
+        const description = `${env.anthropicBaseUrl} | ${apiKeyPart}`;
+
         return {
           name: `${displayName}\n  ${chalk.dim(description)}`,
           value: env.name,
@@ -91,7 +92,12 @@ function showEnvironmentsList(config: any): void {
     
     console.log(`${prefix} ${name}${suffix}`);
     console.log(`  ${chalk.dim('Base URL:')} ${env.anthropicBaseUrl}`);
-    console.log(`  ${chalk.dim('API Key:')} ${env.anthropicApiKey.substring(0, 7)}...`);
+    if (env.anthropicApiKey) {
+      console.log(`  ${chalk.dim('API Key:')} ${env.anthropicApiKey.substring(0, 7)}...`);
+    }
+    if (env.anthropicAuthToken) {
+      console.log(`  ${chalk.dim('Auth Token:')} ${env.anthropicAuthToken.substring(0, 7)}...`);
+    }
     console.log();
   });
 
